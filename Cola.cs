@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 namespace tp1
 {
-	/// <summary>
-	/// Description of Cola.
-	/// </summary>
+
 	public class Cola<T>
 	{
 
