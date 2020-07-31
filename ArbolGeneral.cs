@@ -1,51 +1,36 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace tp3
+namespace tp1
 {
 	public class ArbolGeneral<T>
 	{
 		
-		private NodoGeneral<T> raiz;
+		private T dato;
+		private List<ArbolGeneral<T>> hijos = new List<ArbolGeneral<T>>();
 
 		public ArbolGeneral(T dato) {
-			this.raiz = new NodoGeneral<T>(dato);
-		}
-	
-		private ArbolGeneral(NodoGeneral<T> nodo) {
-			this.raiz = nodo;
-		}
-	
-		private NodoGeneral<T> getRaiz() {
-			return raiz;
+			this.dato = dato;
 		}
 	
 		public T getDatoRaiz() {
-			return this.getRaiz().getDato();
+			return this.dato;
 		}
 	
 		public List<ArbolGeneral<T>> getHijos() {
-			List<ArbolGeneral<T>> temp= new List<ArbolGeneral<T>>();
-			foreach (var element in this.raiz.getHijos()) {
-				temp.Add(new ArbolGeneral<T>(element));
-			}
-			return temp;
+			return hijos;
 		}
 	
 		public void agregarHijo(ArbolGeneral<T> hijo) {
-			this.raiz.getHijos().Add(hijo.getRaiz());
+			this.getHijos().Add(hijo);
 		}
 	
 		public void eliminarHijo(ArbolGeneral<T> hijo) {
-			this.raiz.getHijos().Remove(hijo.getRaiz());
-		}
-	
-		public bool esVacio() {
-			return this.raiz == null;
+			this.getHijos().Remove(hijo);
 		}
 	
 		public bool esHoja() {
-			return this.raiz != null && this.getHijos().Count == 0;
+			return this.getHijos().Count == 0;
 		}
 	
 		public int altura() {
